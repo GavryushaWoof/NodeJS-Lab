@@ -1,7 +1,10 @@
+const myArgs = process.argv.slice(2);
 const http = require("http");
 const options = {
-    path: "/post",
     method: "POST",
+    host: myArgs[0],
+    port: myArgs[2],
+    path: myArgs[1],
     headers: { "WhatWillSaveTheWorld": "Love" }
 };
 const callback = (response) => {

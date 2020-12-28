@@ -1,6 +1,9 @@
+const myArgs = process.argv.slice(2);
 const http = require("http");
 const options = {
-    path: "/",
+    host: myArgs[0],
+    port: myArgs[2],
+    path: myArgs[1],
     method: "GET",
 };
 const callback = (response) => {
