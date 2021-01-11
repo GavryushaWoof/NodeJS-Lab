@@ -7,10 +7,6 @@ const info = 'info.json';
 
 http.createServer((request, response) => {
     let logs = JSON.parse(fs.readFileSync(info, 'utf-8'));
-    const queryObject = url.parse(request.url, true).query;
-    const ip = request.connection.remoteAddress;
-
-    console.log(request.method);
     if (
         request.method === 'POST' &&
         request.headers.iknowyoursecret === 'TheOwlsAreNotWhatTheySeem'
@@ -22,7 +18,8 @@ http.createServer((request, response) => {
             }
         });
         console.log('I know your secret! -', request.headers.iknowyoursecret);
-        response.end(`Hello, ${request.headers.name}`);
+
+        console.log(`Hello, ${request.headers.name}`);
     }
     response.end();
 }).listen(8080);
