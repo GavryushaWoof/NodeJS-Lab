@@ -15,14 +15,14 @@ http.createServer((request, response) => {
         request.method === 'POST' &&
         request.headers.iknowyoursecret === 'TheOwlsAreNotWhatTheySeem'
     ) {
-        console.log('I know your secret! -', request.headers.iknowyoursecret);
         logs.push({ name: request.headers.name, ip: request.connection.remoteAddress });
         fs.writeFile(info, JSON.stringify(logs), (err) => {
             if (err) {
                 throw err;
             }
         });
+        console.log('I know your secret! -', request.headers.iknowyoursecret);
         response.end(`Hello, ${request.headers.name}`);
     }
     response.end();
-}).listen(3000);
+}).listen(8080);
