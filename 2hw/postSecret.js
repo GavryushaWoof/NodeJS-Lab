@@ -16,6 +16,9 @@ const callback = (response) => {
     response.on('end', () => {
         console.log(str);
     });
+    response.on('error', () => {
+        console.log(str);
+    });
 }
 const req = http.request(options, callback);
 req.write("hello everyone!");
