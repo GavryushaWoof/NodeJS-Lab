@@ -5,11 +5,9 @@ const options = {
     host: myArgs[0],
     port: myArgs[2],
     path: myArgs[1],
-    headers: { "IKnowYourSecret": "TheOwlsAreNotWhatTheySeem" }
+    headers: { "IKnowYourSecret": "TheOwlsAreNotWhatTheySeem", "name": myArgs[3] }
 }
-const params = {
-    name: 'Name',
-};
+
 const callback = (response) => {
     let str = '';
     response.on('data', (chunk) => {
@@ -19,6 +17,6 @@ const callback = (response) => {
         console.log(str);
     });
 }
-const req = http.request(options, params, callback);
+const req = http.request(options, callback);
 req.write("hello everyone!");
 req.end();
