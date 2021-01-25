@@ -1,3 +1,2 @@
-Что бы запустить сервер, нужно написать в командной строке: node server.js
 Что бы отправить запрос, нужно написать в командной строке: node файл HOST PATH PORT NAME
 Например: node postSecret.js localhost // 8080 Alex
