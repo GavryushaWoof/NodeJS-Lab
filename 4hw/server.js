@@ -21,13 +21,16 @@ app.post('/', (request, response) => {
     const user = new User({ name: name, ip: request.connection.remoteAddress });
     user.save((error, savedUser) => {
         if (error) throw error;
-        response.send(`Hello ${savedUser.name} with ${savedUser.ip}!`);
+        console.log(`Hello ${savedUser.name} with ${savedUser.ip}!`);
     })
     return response.end();
 });
 
-app.listen(8080, (err) => {
-    if (err) {
-        return console.log('An error has occurred', err);
-    }
+app.listen(8080, () => {
+    User.find({}, (err, users) => {
+        console.log(
+            "In the collection at the moment",
+            users.map((u) => u.name).join(" ")
+        );
+    })
 });
